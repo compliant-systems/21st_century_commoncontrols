@@ -1,4 +1,4 @@
-# commoncontrols_in_21st_century
-comctl32.dll in XXI-st century
+# WIN32 Common Controls in the 21st century
+## And in the C++
 
-Discussion is [HERE](https://developercommunity.visualstudio.com/content/problem/947351/does-not-work-taskdialogindirect-win10-10018363628.html)
+Visual Studio, Developer Community, Discussion is [HERE](https://developercommunity.visualstudio.com/content/problem/947351/does-not-work-taskdialogindirect-win10-10018363628.html)
