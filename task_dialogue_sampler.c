@@ -7,6 +7,12 @@
 
 #ifdef TASK_DIALOGUE_SAMPLER
 
+/*
+This is the key incantation. Documented here.
+Had to ask MSFT support to be able to connect the two.
+
+https://docs.microsoft.com/en-us/cpp/mfc/build-requirements-for-windows-vista-common-controls?view=vs-2019
+*/
 #ifdef UNICODE
 #if defined _M_IX86
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
@@ -48,10 +54,12 @@ void task_dialog_simplex(_In_ HINSTANCE hInst)
 		{ IDOK, L"Change password" }
 	};
 	config.cbSize = sizeof(config);
+	/* if not set will be the app file base name with extension */
+	config.pszWindowTitle = dbj_app_path();
 	config.hInstance = hInst;
 	config.dwCommonButtons = TDCBF_CANCEL_BUTTON;
 	config.pszMainIcon = TD_WARNING_ICON;
-	config.pszMainInstruction = L"Change the Password\nSecond line of text\nAnd the third line too";
+	config.pszMainInstruction = L"Change the Password dialogue\nSecond line of text\nAnd the third line too";
 	config.pszContent = L"Remember your changed the password.\nBut really do remember.";
 	config.pButtons = buttons;
 	config.cButtons = ARRAYSIZE(buttons);
@@ -93,18 +101,19 @@ void task_dialog_complex(_In_ HINSTANCE hInst)
 	TASKDIALOGCONFIG tdc = { sizeof(TASKDIALOGCONFIG) };
 	int nClickedBtn;
 	BOOL bCheckboxChecked;
-	LPCWSTR szTitle = dbj_app_path() , szHeader = L"Header text", szCheckboxText = L"Check Box Text",
+	LPCWSTR szHeader = L"Header text", szCheckboxText = L"Check Box Text",
 		szExtraInfo =
 		L"This update was released on " DBJ_WIDE(__DATE__) L" " \
 		L"\n" \
 		L"<a href=\"https://dbj.org/\">Full details about this update</a>";
 	TASKDIALOG_BUTTON aCustomButtons[] = { { 1000, L"One Custom Button" }, { 1001, L"Two Custom Buttons" } };
 
+	// NULL == desktop window
 	tdc.hwndParent = NULL; // m_hWnd;
 	tdc.dwFlags = TDF_USE_COMMAND_LINKS | TDF_ENABLE_HYPERLINKS;
 	tdc.pButtons = aCustomButtons;
 	tdc.cButtons = _countof(aCustomButtons);
-	tdc.pszWindowTitle = szTitle;
+	tdc.pszWindowTitle = dbj_app_path();
 	tdc.pszMainIcon = TD_INFORMATION_ICON;
 	tdc.pszMainInstruction = szHeader;
 	tdc.pszExpandedInformation = szExtraInfo;
