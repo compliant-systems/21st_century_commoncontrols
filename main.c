@@ -5,16 +5,19 @@
 #include "common.h"
 /*
 ------------------------------------------------------------
+NOTE: must use wWinMain for proper UNICODE support
+__wargv might be NULL if app is not started 
+from wWinMain
 */
-int CALLBACK WinMain(
+int CALLBACK wWinMain(
     _In_ HINSTANCE hInstance,
     _In_opt_ HINSTANCE hPrevInstance,
-    _In_ LPSTR lpCmdLine,
+    _In_ LPWSTR lpCmdLine,
     _In_ int nShowCmd
 )
 {
   task_dialog_simplex(hInstance);
   task_dialog_complex(hInstance);
-  unicode_mbox();
+//  utf8_mbox();
     return 0;
 }
