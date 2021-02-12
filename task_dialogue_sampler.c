@@ -30,7 +30,9 @@ https://docs.microsoft.com/en-us/cpp/mfc/build-requirements-for-windows-vista-co
 
 /*
 ------------------------------------------------------------
-This actually shows proper glyphs on WIN19 up to date desktop
+This actually shows proper glyphs on WIN10 up to date desktop
+Provided you use the proper font
+And what is the "proper font"? 
 */
 void utf8_mbox() {
 	const char* caption =
