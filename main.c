@@ -5,9 +5,9 @@
 #include "common.h"
 /*
 ------------------------------------------------------------
-NOTE: must use wWinMain for proper UNICODE support
+NOTE: must use wWinMain or wmain for proper UNICODE support
 __wargv might be NULL if app is not started 
-from wWinMain
+from wWinMain or wmain
 */
 int CALLBACK wWinMain(
     _In_ HINSTANCE hInstance,
